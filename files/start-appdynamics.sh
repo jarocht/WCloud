@@ -3,11 +3,13 @@ echo "Start up initiated" >> appdynamics.log
 echo "Found APPDYNAMICS_START_AGENT set to:${APPDYNAMICS_START_AGENT}" >> appdynamics.log
 if [ "$APPDYNAMICS_START_AGENT" = "true" ]; then
 
+    echo "Found APPDYNAMICS_START_DELAY set to:${APPDYNAMICS_START_DELAY}: waiting that long to hook JVM" >> appdynamics.log
+
     pid=
     while [ -z "$pid" ]
     do
     pid="$(pgrep java)"
-    sleep 30
+    sleep ${APPDYNAMICS_START_DELAY}
     done
 
     echo "Found PID:${pid}:" >> appdynamics.log
