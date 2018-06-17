@@ -35,7 +35,7 @@ if [ "$APPDYNAMICS_START_AGENT" = "true" ]; then
     echo "Set appd_tier_name to:${appd_tier_name}:" >> appdynamics.log
 
     echo "Hooking AppD agent into pid:${pid}, with tier name:${appd_tier_name}, and node name:${HOSTNAME}" >> appdynamics.log
-    java -Xbootclasspath/a:/usr/lib/jvm/java-1.8.0-openjdk-amd64/lib/tools.jar -jar /opt/appdynamics/agent/javaagent.jar ${pid} appdynamics.agent.tierName=${appd_tier_name},appdynamics.agent.nodeName=${HOSTNAME} >> appdynamics.log
+    java -Xbootclasspath/a:/usr/lib/jvm/java-1.8.0-openjdk-amd64/lib/tools.jar -jar /opt/appdynamics/agent/javaagent.jar ${pid} appdynamics.agent.tierName=${appd_tier_name},appdynamics.agent.nodeName=${HOSTNAME} &
     echo "AppD agent has been hooked!" >> appdynamics.log
 else 
     echo "APPDYNAMICS_START_AGENT is 'false', exiting without hooking agent" >> appdynamics.log
