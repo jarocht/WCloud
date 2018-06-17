@@ -1,7 +1,7 @@
 #!bin/bash
 echo "Start up initiated" >> appdynamics.log 
 echo "Found APPDYNAMICS_START_AGENT set to:${APPDYNAMICS_START_AGENT}" >> appdynamics.log
-if [ "$APPDYNAMICS_START_AGENT" = 'true' ]; then
+if [ "$APPDYNAMICS_START_AGENT" = "true" ]; then
 
     pid=
     while [ -z "$pid" ]
