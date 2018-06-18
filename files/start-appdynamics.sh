@@ -15,10 +15,10 @@ if [ "$APPDYNAMICS_START_AGENT" = "true" ]; then
     echo "Found PID:${pid}:" >> appdynamics.log
 
     # Determine tier name from hostname
-    a=m2meventlistenerstg-v2-65785c574d-tlns7
-    #a=$HOSTNAME
-    b=stg
-    #b=$spring_profile
+    #a=m2meventlistenerstg-v2-65785c574d-tlns7
+    a=$HOSTNAME
+    #b=stg
+    b=$spring_profile
 
     echo "Found HOSTNAME:${a}:" >> appdynamics.log
     echo "Found spring_profile:${b}:" >> appdynamics.log
