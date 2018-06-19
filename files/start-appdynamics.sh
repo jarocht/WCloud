@@ -1,5 +1,7 @@
 #!bin/bash
-echo "Start up initiated" >> appdynamics.log 
+export APPDYNAMICS_START_AGENT=true #set to false to disable agent hooking
+
+echo "Start-appdynamics.sh initiated" >> appdynamics.log
 echo "Found APPDYNAMICS_START_AGENT set to:${APPDYNAMICS_START_AGENT}" >> appdynamics.log
 if [ "$APPDYNAMICS_START_AGENT" = "true" ]; then
 
