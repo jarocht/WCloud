@@ -31,8 +31,14 @@ if [ "$APPDYNAMICS_START_AGENT" = "true" ]; then
     }
     strindex "$a" "$b"
     if [ $index = "-1" ]; then
-        appd_tier_name=$HOSTNAME
-        echo "ERROR: Failed to parse the hostname for a service name, using hostname instead." >> appdynamics.log
+        echo "WARN: Failed to parse the hostname for a service name, checking for qa." >> appdynamics.log
+        strindex "$a" "qa"
+        if [ $index = "-1" ]; then
+            appd_tier_name=$HOSTNAME
+            echo "ERROR: Failed to parse the hostname for a service name, using hostname instead." >> appdynamics.log
+        else
+            appd_tier_name=${a:0:$index}
+        fi
     else
         appd_tier_name=${a:0:$index}
     fi
