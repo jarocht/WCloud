@@ -48,7 +48,7 @@ if [ "$APPDYNAMICS_START_AGENT" = "true" ]; then
     echo "Unique Host ID is:${UNIQUE_HOST_ID}:" >> appdynamics.log
 
     echo "Hooking AppD agent into pid:${pid}, with app name:WCloud-residential-$spring_profile, tier name:${appd_tier_name}, and node name prefix:${appd_tier_name}, node name reuse is set to 'true'" >> appdynamics.log
-    java -Xbootclasspath/a:/usr/lib/jvm/java-1.8.0-openjdk-amd64/lib/tools.jar -jar /opt/appdynamics/agent/javaagent.jar ${pid} appdynamics.agent.applicationName=WCloud-residential-$spring_profile,appdynamics.agent.tierName=appd_tier_name,appdynamics.agent.reuse.nodeName=true,appdynamics.agent.uniqueHostId=${UNIQUE_HOST_ID},appdynamics.agent.reuse.nodeName.prefix=appd_tier_name,appdynamics.analytics.agent.url=http://169.60.159.85:9090/v2/sinks/bt &
+    java -Xbootclasspath/a:/usr/lib/jvm/java-1.8.0-openjdk-amd64/lib/tools.jar -jar /opt/appdynamics/agent/javaagent.jar ${pid} appdynamics.agent.applicationName=WCloud-residential-$spring_profile,appdynamics.agent.tierName=${appd_tier_name},appdynamics.agent.reuse.nodeName.prefix=${appd_tier_name},appdynamics.agent.reuse.nodeName=true,appdynamics.agent.uniqueHostId=${UNIQUE_HOST_ID},appdynamics.analytics.agent.url=http://169.60.159.85:9090/v2/sinks/bt &
     echo "AppD agent has been hooked!" >> appdynamics.log
 else 
     echo "APPDYNAMICS_START_AGENT is 'false', exiting without hooking agent" >> appdynamics.log
